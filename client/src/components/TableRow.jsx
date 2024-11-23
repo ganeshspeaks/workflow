@@ -139,13 +139,15 @@ function TableRow({ board_id, item_ids, item_names, length }) {
         }
     }
 
-    const handleDateChange = (boardId, itemId, newDate) => {
+    const handleDateChange = (boardId, itemId, date) => {
+        const formattedDate = date.toISOString().split('T')[0];
+        // console.log(formattedDate)
         setDates(prevDates => ({
             ...prevDates,
-            [itemId]: newDate
+            [itemId]: formattedDate
         }));
 
-        updateColumnValue(boardId, itemId, 'date', newDate);
+        updateColumnValue(boardId, itemId, 'date', formattedDate);
     }
 
     return (
